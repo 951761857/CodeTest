@@ -2,6 +2,4 @@
 # 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
 ################################################################################
 
-/Test.CoreAppLifeTime/.vs/Test.CoreAppLifeTime
-/Test.CoreAppLifeTime/Test.CoreAppLifeTime/bin/Debug/net5.0
-/Test.CoreAppLifeTime/Test.CoreAppLifeTime/obj
+/DotNetCore/DotNetCore.Test/.vs/DotNetCore.Test
