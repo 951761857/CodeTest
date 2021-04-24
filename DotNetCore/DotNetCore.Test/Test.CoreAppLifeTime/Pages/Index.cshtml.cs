@@ -37,7 +37,7 @@ namespace Test.CoreAppLifeTime.Pages
 
             HttpContext.Response.ContentType = "text/html; charset=utf-8";
 
-            HttpContext.Response.WriteAsync($"RequestProvier与上次请求是否同一个:{object.ReferenceEquals(LifeTimeConfig.RequestProvier,_serviceProvider)} <br>");
+            HttpContext.Response.WriteAsync($"RequestProvier与上次请求是否同一个:{object.ReferenceEquals(LifeTimeConfig.RequestProvier, _serviceProvider)} <br>");
             HttpContext.Response.WriteAsync($"RequestProvier与Config是否同一个:{object.ReferenceEquals(LifeTimeConfig.ProviderInstance, _serviceProvider)} <br>");
             HttpContext.Response.WriteAsync($"RequestProvier与根是否同一个:{object.ReferenceEquals(LifeTimeConfig.RootProvide, _serviceProvider)} <br>");
             HttpContext.Response.WriteAsync($"Config与根是否同一个:{object.ReferenceEquals(LifeTimeConfig.RootProvide, LifeTimeConfig.ProviderInstance)} <br>");
@@ -52,15 +52,15 @@ namespace Test.CoreAppLifeTime.Pages
 
             //RequestProvider与RootProvider生成singleton是否同一个
             //如果相同说明RequestProvider获取singleton跟RootProvider指向同一个生成方法
-            HttpContext.Response.WriteAsync($"RequestProvider与RootProvider生成singleton是否同一个:{object.ReferenceEquals(_serviceProvider.GetRequiredService<TestSingleton>(),LifeTimeConfig.RootProvide.GetRequiredService<TestSingleton>())} <br>");
+            HttpContext.Response.WriteAsync($"RequestProvider与RootProvider生成singleton是否同一个:{object.ReferenceEquals(_serviceProvider.GetRequiredService<TestSingleton>(), LifeTimeConfig.RootProvide.GetRequiredService<TestSingleton>())} <br>");
 
             //RequestProvider重新获取的Scope与构造函数是否同一个,是同一个说明：
             //1.构造函数获取的是该请求的ServiceProvider
             //2.单个请求获取到的Scope都是同一个对象
-            HttpContext.Response.WriteAsync($"RequestProvider重新获取的Scope与构造函数是否同一个:{object.ReferenceEquals(_serviceProvider.GetRequiredService<TestScope>(),_testScope)} <br>");
+            HttpContext.Response.WriteAsync($"RequestProvider重新获取的Scope与构造函数是否同一个:{object.ReferenceEquals(_serviceProvider.GetRequiredService<TestScope>(), _testScope)} <br>");
 
             //RequestProvider获取的Transient与构造函数是否同一个
-            HttpContext.Response.WriteAsync($"RequestProvider获取的Transient与构造函数是否同一个:{object.ReferenceEquals(_serviceProvider.GetRequiredService<TestTransient>(),_testTransient)} <br>");
+            HttpContext.Response.WriteAsync($"RequestProvider获取的Transient与构造函数是否同一个:{object.ReferenceEquals(_serviceProvider.GetRequiredService<TestTransient>(), _testTransient)} <br>");
 
             //RequestProvider两次获取的Transient是否同一个
             HttpContext.Response.WriteAsync($"RequestProvider两次获取的Transient是否同一个:{object.ReferenceEquals(_serviceProvider.GetRequiredService<TestTransient>(), _serviceProvider.GetRequiredService<TestTransient>())} <br>");

@@ -3,3 +3,5 @@
 ################################################################################
 
 /DotNetCore/DotNetCore.Test/.vs/DotNetCore.Test
+/DotNetCore/DotNetCore.Test/Test.CoreAppLifeTime/bin/Debug/net5.0
+/DotNetCore/DotNetCore.Test/Test.CoreAppLifeTime/obj
