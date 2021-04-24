@@ -43,7 +43,7 @@ namespace Test.CoreAppLifeTime.Pages
             HttpContext.Response.WriteAsync($"Config与根是否同一个:{object.ReferenceEquals(LifeTimeConfig.RootProvide, LifeTimeConfig.ProviderInstance)} <br>");
             HttpContext.Response.WriteAsync($"ServiceColletion重新buildService与Config是否同一个:{object.ReferenceEquals(LifeTimeConfig.ConfigServiceCollection.BuildServiceProvider(), LifeTimeConfig.ProviderInstance)} <br>");
 
-            LifeTimeConfig.RequestProvier = _serviceProvider;
+            LifeTimeConfig.RequestProvier = _serviceProvider; 
 
             HttpContext.Response.WriteAsync($"_testScope:{_testScope.CreateTime} <br>");
             HttpContext.Response.WriteAsync($"_testSingleton:{_testSingleton.CreateTime} <br>");
