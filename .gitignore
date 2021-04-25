@@ -5,3 +5,12 @@
 /DotNetCore/DotNetCore.Test/.vs/DotNetCore.Test
 /DotNetCore/DotNetCore.Test/Test.CoreAppLifeTime/bin/Debug/net5.0
 /DotNetCore/DotNetCore.Test/Test.CoreAppLifeTime/obj
+/DotNetCore/.vs/DotNetCore.Test
+/DotNetCore/Test.CoreAppLifeTime/bin/Debug/net5.0
+/DotNetCore/Test.CoreAppLifeTime/obj
+/DotNetCore/Test.CoreDataStruct/obj
+/DotNetCore/Test.CoreDataStruct.Sort/obj
+/DotNetCore/Test.CoreOperatorReWrite/obj
+/DotNetCore/Test.CoreDataStruct/bin/Debug/net5.0
+/DotNetCore/Test.CoreDataStruct.Sort/bin/Debug/net5.0
+/DotNetCore/Test.CoreOperatorReWrite/bin/Debug/net5.0
