@@ -10,7 +10,9 @@ namespace Test.CoreDataStruct.Sort
             //var selectRes = GetRandomIntArr(20, 1, 50).SelectSort();
             //var insertionRes = GetRandomIntArr(20, 1, 50).InsertionSor();
             //var shellRes = GetRandomIntArr(20, 1, 50).ShellSort();
-            var mergeRes = GetRandomIntArr(20, 1, 50).MergeSort();
+            //var mergeRes = GetRandomIntArr(20, 1, 50).MergeSort();
+            //var quickRes =  new int[]{72,6,57,88,60,42,83,73,48,85}.QuickSort(0,10-1);
+            var countintRes = GetRandomIntArr(50, -50, 50).CountingSort();
         }
 
 
@@ -202,14 +204,7 @@ namespace Test.CoreDataStruct.Sort
             return MergeSortMain(intArr, empty, 0, intArr.Length - 1);
         }
 
-        /// <summary>
-        /// 归并排序递归主方法
-        /// </summary>
-        /// <param name="intArr"></param>
-        /// <param name="empty"></param>
-        /// <param name="indexStart"></param>
-        /// <param name="indexEnd"></param>
-        /// <returns></returns>
+         
         public static int[] MergeSortMain(int[] intArr, int[] empty, int indexStart, int indexEnd)
         {
             if (indexStart >= indexEnd)
@@ -234,7 +229,8 @@ namespace Test.CoreDataStruct.Sort
             //两个子标移动比较，其中一个子标比较完毕全部加入临时数组时退出
             while (leftStart <= leftEnd && rightStart <= rightEnd)
             {
-                if (intArr[leftStart] < intArr[rightStart])
+                //大就往前排
+                if (intArr[rightStart] > intArr[leftStart])
                 {
                     empty[emptyInsertIndex++] = intArr[rightStart++];
                 }
@@ -265,6 +261,128 @@ namespace Test.CoreDataStruct.Sort
             return intArr;
         }
 
+
+        /// <summary>
+        /// 快速排序
+        /// </summary>
+        /// <param name="intArr"></param>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
+        public static int[] QuickSort(this int[] intArr,int left,int right)
+        {
+            if (left>= right)
+            {
+                return intArr;
+            }
+
+            //记录  传递到递归
+            var leftCopy = left;
+            var rightCopy = right;
+
+            //挖坑 基准值
+            var indexValue = intArr[left];
+            //坑位
+            var index = left;
+
+            left++;
+
+            //比基准值大的往左
+            while (left <= right)
+            {
+                //右游标往左移动 left < right = false 结束该次遍历，intArr[right]> indexValue = true跳出循环换坑位
+                while (left <= right && !(intArr[right] > indexValue)) right--;
+
+                //上面的循环 intArr[right]> indexValue = true跳出循环换坑位
+                if (left <= right)
+                {
+                    intArr[index] = intArr[right];
+                    index = right;
+                    right--;
+                }
+
+                //左游标右移动 left < right = false 结束该次遍历，intArr[left]< indexValue = true跳出循环换坑位
+                while (left <= right && !(intArr[left] < indexValue)) left++;
+
+                //上面的循环 intArr[left]< indexValue = true跳出循环换坑位
+                if (left <= right)
+                {
+                    intArr[index] = intArr[left];
+                    index = left;
+                    left++;
+                }
+            }
+            
+            intArr[index] = indexValue;
+
+            //左右继续分治
+            QuickSort(intArr, leftCopy, index - 1);
+            QuickSort(intArr, index + 1, rightCopy);
+
+            return intArr;
+        }
+
+        /// <summary>
+        /// 计数排序
+        /// </summary>
+        /// <returns></returns>
+        public static int[] CountingSort(this int[] intArr)
+        {
+            int minValue = intArr[0];
+            int maxValue = intArr[0];
+           
+
+            //偏移量  兼容负数
+            int rightPoint = 0;
+
+            for (int i = 0; i < intArr.Length; i++)
+            {
+                if (intArr[i] < minValue)
+                {
+                    minValue = intArr[i];
+                    continue;
+                }
+
+                if (intArr[i] > maxValue)
+                {
+                    maxValue = intArr[i];
+                    continue;
+                }
+            }
+
+            if (minValue < 0)
+            {
+                //有负数时进行偏移
+                rightPoint = Math.Abs(minValue);
+            }
+
+            //+1 兼容0,值即下标
+            //+rightPoint 兼容负数
+            int[] bucket = new int[maxValue+1+rightPoint];
+
+            for (int i = 0; i < intArr.Length; i++)
+            {
+                //初始值为0 直接自加
+                //下标即为值，进行偏移兼容负数
+                bucket[intArr[i] + rightPoint]++;
+            }
+
+            int cover = 0;
+            //从bucket.Length自减为降序
+            for (int i = bucket.Length - 1; i >= 0; i--)
+            {
+                while (bucket[i]> 0)
+                {
+                    intArr[cover] = i-rightPoint;
+                    cover++;
+                    bucket[i]--;
+                }
+            }
+
+
+            return intArr;
+
+        }
 
     }
 
