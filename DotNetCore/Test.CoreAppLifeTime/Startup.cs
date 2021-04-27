@@ -33,7 +33,6 @@ namespace Test.CoreAppLifeTime
 
             LifeTimeConfig.ConfigServiceCollection = services;
 
-            LifeTimeConfig.ProviderInstance = services.BuildServiceProvider();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
