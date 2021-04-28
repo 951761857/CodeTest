@@ -6,6 +6,8 @@ namespace Test.CoreDataStruct.Sort
     {
         static void Main(string[] args)
         {
+
+
             //var maopaoRes = GetRandomIntArr(20,1,50).BubbleSort();
             //var selectRes = GetRandomIntArr(20, 1, 50).SelectSort();
             //var insertionRes = GetRandomIntArr(20, 1, 50).InsertionSor();

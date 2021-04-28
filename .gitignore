@@ -14,3 +14,5 @@
 /DotNetCore/Test.CoreDataStruct/bin/Debug/net5.0
 /DotNetCore/Test.CoreDataStruct.Sort/bin/Debug/net5.0
 /DotNetCore/Test.CoreOperatorReWrite/bin/Debug/net5.0
+/DotNetCore/Test.Application/bin/Debug/net5.0
+/DotNetCore/Test.Application/obj
