@@ -11,7 +11,6 @@ namespace Test.CoreAppLifeTime.BaseCore
     {
         public static IServiceProvider RootProvide { get; set; }
 
-        public static IServiceProvider ProviderInstance { get; set; }
 
         public static IServiceCollection ConfigServiceCollection { get; set; }
 
